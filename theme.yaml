@@ -1,0 +1,18 @@
+# theme.yaml configuration file
+
+name: Cloak e-mail adresses
+license: GPLv3
+licenselink: https://github.com/martignoni/hugo-cloak-email/blob/master/LICENSE
+description: Hugo theme component for cloaking e-mail address, preventing spam
+homepage: https://github.com/martignoni/hugo-cloak-email
+tags:
+  - component
+  - e-mail address
+  - mail address
+features:
+  - cloak e-mail addresses
+min_version: 0.40.0
+
+author:
+  name: Nicolas Martignoni
+  homepage: https://martignoni.net
