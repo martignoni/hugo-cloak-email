@@ -1,5 +1,7 @@
 # hugo-cloak-email
 
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+
 ## About
 
 This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme component providing a shortcode: `cloakemail` to cloak any e-mail address from spamming bots.
