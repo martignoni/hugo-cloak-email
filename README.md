@@ -1,6 +1,6 @@
 # hugo-cloak-email
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Awesome](https://awesome.re/badge.svg)](https://github.com/budparr/awesome-hugo)
 
 ## About
 
