@@ -24,5 +24,6 @@ This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme componen
 
 ### Credits
 
-This theme component was possible because of the work done by
-[@danieka](https://github.com/danieka) in [this pull request](https://github.com/gohugoio/hugo/pull/3935).
+Copyright © 2019 onwards, Nicolas Martignoni nicolas@martignoni.net.
+
+This theme component was possible because of the work done by [@danieka](https://github.com/danieka) in [this pull request](https://github.com/gohugoio/hugo/pull/3935).
