@@ -1,4 +1,12 @@
-{{- $parts := split (index .Params 0) "@" -}}
+<!-- use mailto: if href is not set -->
+{{- $href := "mailto" -}}
+{{- if (.Get "href") -}}
+  {{- $href = (.Get "href") -}}
+{{ end }}
+<!-- create id for the element based on address, href and random number to make id unique -->
+{{- $id := md5 (print (.Get "address") $href (index (seq 999 | shuffle) 0)) -}}
+<!-- split email in between @ -->
+{{- $parts := split (.Get "address") "@" -}}
 {{- $user := (index $parts 0) -}}
 {{- $domain := (index $parts 1) -}}
 <style type="text/css">
@@ -9,11 +17,11 @@
   }
 </style>
 <span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}" data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"></span>
-<script id="id">
-  var scriptTag = document.getElementById("id");
+<script id="{{ $id }}">
+  var scriptTag = document.getElementById("{{ $id }}");
   var link = document.createElement("a");
   var mail = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join('') + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join('');
-  link.href = "mailto:" + mail;
+  link.href = {{ $href }} + ":" + mail;
   link.innerText = mail;
   scriptTag.parentElement.insertBefore(link, scriptTag.previousElementSibling);
   scriptTag.parentElement.removeChild(scriptTag.previousElementSibling)
