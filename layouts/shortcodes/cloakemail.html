@@ -1,6 +1,11 @@
-{{- $parts := split (index .Params 0) "@" -}}
+{{/* Get address and protocol */}}
+{{- $address := .Get "address" | default (.Get 0) -}}
+{{- $protocol := .Get "protocol" | default "mailto" -}}
+{{- $parts := split $address "@" -}}
 {{- $user := (index $parts 0) -}}
 {{- $domain := (index $parts 1) -}}
+{{/* Compute md5 fingerprint */}}
+{{- $fingerprint := md5 (print (.Get "address") $protocol (index (seq 999 | shuffle) 0)) -}}
 <style type="text/css">
   .cloaked-e-mail:before {
     content:attr(data-domain) "\0040" attr(data-user);
@@ -9,12 +14,12 @@
   }
 </style>
 <span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}" data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"></span>
-<script id="id">
-  var scriptTag = document.getElementById("id");
+<script id="{{ $fingerprint }}">
+  var scriptTag = document.getElementById("{{ $fingerprint }}");
   var link = document.createElement("a");
-  var mail = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join('') + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join('');
-  link.href = "mailto:" + mail;
-  link.innerText = mail;
+  var address = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join('') + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join('');
+  link.href = {{ $protocol }} + ":" + address;
+  link.innerText = address;
   scriptTag.parentElement.insertBefore(link, scriptTag.previousElementSibling);
   scriptTag.parentElement.removeChild(scriptTag.previousElementSibling)
 </script>
