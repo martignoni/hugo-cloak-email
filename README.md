@@ -4,7 +4,7 @@
 
 ## About
 
-This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme component providing a shortcode: `cloakemail` to cloak any e-mail or other messaging (`xmpp`, `telegram`, etc.) or phone (`tel`) address from spamming bots.
+This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme component providing a shortcode: `cloakemail` to cloak any e-mail or other messaging (`xmpp`, `tg`, etc.) or phone (`sip`, `tel`, etc.) address from spamming bots.
 
 ## Usage
 
@@ -34,6 +34,7 @@ This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme componen
 
 Copyright © 2019 onwards, Nicolas Martignoni nicolas@martignoni.net.
 
+Thanks to [@mxmehl](https://github.com/mxmehl) for ideas and explanations about other protocols and script fingerprinting.
+
 This theme component was possible because of the work done by [@danieka](https://github.com/danieka) in [this pull request](https://github.com/gohugoio/hugo/pull/3935).
 
-Thanks to [@mxmehl](https://github.com/mxmehl) for ideas and explanations about other protocols and script fingerprinting.
