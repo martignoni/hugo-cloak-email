@@ -25,9 +25,9 @@ This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme componen
     ```go
     {{< cloakemail address="john.doe@example.com" >}}
     ```
-    or, if you want to specify a protocol,
+    or, if you want to specify a protocol and/or a class,
     ```go
-    {{< cloakemail address="john.doe@example.com" protocol="xmpp" >}}
+    {{< cloakemail address="john.doe@example.com" protocol="xmpp" class="vip" >}}
     ```
 
 ### Credits
