@@ -25,10 +25,20 @@ This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme componen
     ```go
     {{< cloakemail address="john.doe@example.com" >}}
     ```
-    or, if you want to specify a protocol and/or a class,
+4. You may specify a protocol, this way:
     ```go
-    {{< cloakemail address="john.doe@example.com" protocol="xmpp" class="vip" >}}
+    {{< cloakemail address="john.doe@example.com" protocol="xmpp" >}}
     ```
+5. or a class, this way:
+    ```go
+    {{< cloakemail address="john.doe@example.com" class="vip" >}}
+    ```
+6. or a text to be display instead of the e-mail address, this way:
+    ```go
+    {{< cloakemail address="john.doe@example.com" display="Send us a mail!" >}}
+    ```
+
+All parameters can be combined.
 
 ### Credits
 

@@ -2,6 +2,7 @@
 {{- $address := .Get "address" | default (.Get 0) -}}
 {{- $protocol := .Get "protocol" | default "mailto" -}}
 {{- $class := .Get "class" -}}
+{{- $displaytext := .Get "display" -}}
 {{- $parts := split $address "@" -}}
 {{- $user := (index $parts 0) -}}
 {{- $domain := (index $parts 1) -}}
@@ -20,7 +21,11 @@
   var link = document.createElement("a");
   var address = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join('') + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join('');
   link.href = {{ $protocol }} + ":" + address;
+  {{ with $displaytext }}
+  link.innerText = {{ $displaytext }};
+  {{ else }}
   link.innerText = address;
+  {{ end }}
   {{ with $class }}
   link.className = "{{ $class }}";
   {{ end }}
