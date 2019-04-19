@@ -15,7 +15,7 @@
     direction:rtl;
   }
 </style>
-<span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}" data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"></span>
+&#32;<span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}" data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"></span>&#32;
 <script id="{{ $fingerprint }}">
   var scriptTag = document.getElementById("{{ $fingerprint }}");
   var link = document.createElement("a");
