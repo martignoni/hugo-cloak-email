@@ -29,6 +29,10 @@ This is not a standalone theme. It is a [Hugo](https://gohugo.io) theme componen
     ```go
     {{< cloakemail address="john.doe@example.com" protocol="xmpp" >}}
     ```
+    or
+    ```go
+    {{< cloakemail address="+1 212 664-7665" protocol="tel" >}}
+    ```
 5. or a class, this way:
     ```go
     {{< cloakemail address="john.doe@example.com" class="vip" >}}
