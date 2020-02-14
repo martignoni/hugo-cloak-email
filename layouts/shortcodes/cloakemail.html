@@ -24,7 +24,7 @@
   {{ with $displaytext }}
   link.innerText = {{ $displaytext }};
   {{ else }}
-  link.innerText = address;
+  link.innerText = address.split('?')[0];
   {{ end }}
   {{ with $class }}
   link.className = "{{ $class }}";
