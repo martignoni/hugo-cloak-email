@@ -7,17 +7,17 @@
 {{- $user := (index $parts 0) -}}
 {{- $domain := (index $parts 1) | default "" -}}
 {{/* Compute md5 fingerprint */}}
-{{- $fingerprint := md5 (print (.Get "address") $protocol (index (seq 999 | shuffle) 0)) -}}
+{{- $fingerprint := md5 (print (.Get "address") $protocol (index (seq 999 | shuffle) 0)) | truncate 8 "" -}}
 <style type="text/css">
-  .cloaked-e-mail:before {
+  #id-{{ $fingerprint }}.cloaked-e-mail:before {
     content:{{ with $domain }}attr(data-domain) "\0040" {{ end }}attr(data-user);
     unicode-bidi:bidi-override;
     direction:rtl;
   }
 </style>
-&#32;<span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}"{{ with $domain }} data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"{{ end }}></span>&#32;
-<script id="{{ $fingerprint }}">
-  var scriptTag = document.getElementById("{{ $fingerprint }}");
+&#32;<span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}"{{ with $domain }} data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"{{ end }} id="id-{{ $fingerprint }}"></span>&#32;
+<script id="id-{{ $fingerprint }}">
+  var scriptTag = document.getElementById("id-{{ $fingerprint }}");
   var link = document.createElement("a");
   var address = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join(''){{ with $domain }} + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join(''){{ end }};
   link.href = {{ $protocol }} + ":" + address;
