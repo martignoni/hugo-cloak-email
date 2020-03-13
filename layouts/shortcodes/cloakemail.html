@@ -11,16 +11,16 @@
 {{- $fingerprint := md5 (print (.Get "address") $protocol (index (seq 999 | shuffle) 0)) | truncate 8 "" -}}
 {{/* Set via CSS what is displayed when Javascript is disabled. Query is never displayed */}}
 <style type="text/css">
-  #id-{{ $fingerprint }}.cloaked-e-mail:before {
+  #span-{{ $fingerprint }}.cloaked-e-mail:before {
     content:{{ with $domain }}attr(data-domain) "\0040" {{ end }}attr(data-user);
     unicode-bidi:bidi-override;
     direction:rtl;
   }
 </style>
-&#32;<span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}"{{ with $domain }} data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"{{ end }} id="id-{{ $fingerprint }}"></span>&#32;
+&#32;<span class="cloaked-e-mail" data-user="{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}"{{ with $domain }} data-domain="{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}"{{ end }} id="span-{{ $fingerprint }}"></span>&#32;
 {{/* Alter display with Javascript by changing DOM */}}
-<script id="id-{{ $fingerprint }}">
-  var scriptTag = document.getElementById("id-{{ $fingerprint }}");
+<script id="script-{{ $fingerprint }}">
+  var scriptTag = document.getElementById("script-{{ $fingerprint }}");
   var link = document.createElement("a");
   var address = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join(''){{ with $domain }} + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join(''){{ with $query }} + "?" + "{{ range $index := seq (sub (len $query) 1) 0}}{{ substr $query $index 1}}{{ end }}".split('').reverse().join(''){{ end }}{{ end }};
   link.href = {{ $protocol }} + ":" + address;
