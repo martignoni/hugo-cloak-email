@@ -10,7 +10,7 @@
 {{/* Compute md5 fingerprint */}}
 {{- $fingerprint := md5 (print $address $protocol (index (seq 999 | shuffle) 0)) | truncate 8 "" -}}
 {{/* Set via CSS what is displayed when Javascript is disabled. Query is never displayed */}}
-<style type="text/css">
+<style>
   #span-{{ $fingerprint }}.cloaked-e-mail:before {
     content:{{ with $domain }}attr(data-domain) "\0040" {{ end }}attr(data-user);
     unicode-bidi:bidi-override;
