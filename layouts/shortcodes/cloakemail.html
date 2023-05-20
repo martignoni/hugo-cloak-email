@@ -24,14 +24,14 @@
   var link = document.createElement("a");
   var address = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join(''){{ with $domain }} + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join(''){{ with $query }} + "?" + "{{ range $index := seq (sub (len $query) 1) 0}}{{ substr $query $index 1}}{{ end }}".split('').reverse().join(''){{ end }}{{ end }};
   link.href = {{ $protocol }} + ":" + address;
-  {{ with $displaytext }}
+  {{- with $displaytext }}
   link.innerText = {{ $displaytext }};
-  {{ else }}
+  {{- else }}
   link.innerText = address.split('?')[0];
-  {{ end }}
-  {{ with $class }}
+  {{- end }}
+  {{- with $class }}
   link.className = "{{ $class }}";
-  {{ end }}
+  {{- end }}
   scriptTag.parentElement.insertBefore(link, scriptTag.previousElementSibling);
   scriptTag.parentElement.removeChild(scriptTag.previousElementSibling)
 </script>
