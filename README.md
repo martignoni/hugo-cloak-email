@@ -4,11 +4,11 @@
 
 ## About
 
-This [Hugo](https://gohugo.io) theme component provides a shortcode and a partial
+This [Hugo](https://gohugo.io) theme component provides a shortcode and a partial.
 
 ## Features
 
-Shortcode `cloakemail` cloakes e-mail or other messaging (`xmpp`, `tg`, etc.) or phone (`sip`, `tel`, etc.) addresses from spamming bots. Can also be used as a partial with equivalent functionality.
+Shortcode `cloakemail` cloakes e-mail or other messaging (`xmpp`, `tg`, etc.) or phone (`sip`, `tel`, etc.) addresses from spamming bots. It can also be used as a partial with equivalent functionality.
 
 ### Mandatory parameter
 
@@ -33,7 +33,7 @@ All parameters can be combined.
 
 ### Use as partial
 
-In some cases, you have to embed e-mail addresses directly in your theme code, e.g. partials. Therefore, you can also use the functionality as a partial.
+In some cases, you have to embed e-mail addresses directly in your theme code, e.g. with partials. This component can also be used as a partial, with the same functionality.
 
 Examples:
 
@@ -73,6 +73,6 @@ Given address `jane.doe@example.com`, the shortcode
 
 Copyright © 2019 onwards, Nicolas Martignoni nicolas@martignoni.net.
 
-Thanks to [@mxmehl](https://github.com/mxmehl) for ideas and explanations about other protocols and script fingerprinting.
+Thanks to [@mxmehl](https://github.com/mxmehl) for ideas and explanations about other protocols and script fingerprinting and for implementing the use of this component as a partial.
 
 This theme component was possible because of the work done by [@danieka](https://github.com/danieka) in [this pull request](https://github.com/gohugoio/hugo/pull/3935).
