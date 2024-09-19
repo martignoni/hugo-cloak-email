@@ -4,11 +4,11 @@
 
 ## About
 
-This [Hugo](https://gohugo.io) theme component provides a shortcode.
+This [Hugo](https://gohugo.io) theme component provides a shortcode and a partial
 
 ## Features
 
-Shortcode `cloakemail` cloakes e-mail or other messaging (`xmpp`, `tg`, etc.) or phone (`sip`, `tel`, etc.) addresses from spamming bots.
+Shortcode `cloakemail` cloakes e-mail or other messaging (`xmpp`, `tg`, etc.) or phone (`sip`, `tel`, etc.) addresses from spamming bots. Can also be used as a partial with equivalent functionality.
 
 ### Mandatory parameter
 
@@ -30,6 +30,15 @@ Don't indicate other URI parameters, for instance to indicate an e-mail subject.
 - Use `query` to specify a e-mail subject or other URI parameters (URI query): `{{< cloakemail address="jane.doe@example.com" query="subject=Message from contact form" >}}`. The query is never printed on the web page.
 
 All parameters can be combined.
+
+### Use as partial
+
+In some cases, you have to embed e-mail addresses directly in your theme code, e.g. partials. Therefore, you can also use the functionality as a partial.
+
+Examples:
+
+- `{{ partial "cloakemail" (dict "address" "jane.doe@example.com") }}`
+- `{{ partial "cloakemail" (dict "address" "jane.doe@example.com" "protocol" "xmpp") }}`
 
 ### How it works
 
